@@ -140,6 +140,11 @@ h6 {
   #main {
     margin-left: 100px;
   }
+
+  #main_detail {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 /*--------------------------------------------------------------
