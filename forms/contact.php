@@ -15,5 +15,5 @@
 
   } else {
     die( 'Unable to send the message.');
-  }
+  } 
 ?>
