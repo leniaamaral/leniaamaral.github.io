@@ -213,17 +213,16 @@ async function runExperiment() {
 // Save results function: sends data to the Google Apps Script web app
 function saveResults(results) {
   console.log("Saving results:", results);
-  fetch('https://script.google.com/macros/s/AKfycbywLofTzezNNjIrcZYVz1blYDg4pjAPm6BmMaUcRBOlumEe-mlKWkNT4O57WIpu8c0U/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbyDh_1VnFEwXFxyfL_L9aEX59FbJtx2EfSRNQFWi6tTThyIRb4x5M1911tbKf_1E1cg/exec', {
     method: 'POST',
-    mode: 'no-cors',  // This bypasses the CORS preflight but returns an opaque response.
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ results: results, timestamp: Date.now() })
   })
-  .then(response => {
-    // With 'no-cors', response is opaque and you cannot read its content.
-    console.log('Data saved (opaque response):', response);
+  .then(response => response.json())
+  .then(data => {
+    console.log('Data saved successfully:', data);
   })
   .catch(error => {
     console.error('Error saving data:', error);
