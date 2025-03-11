@@ -215,19 +215,21 @@ function saveResults(results) {
   console.log("Saving results:", results);
   fetch('https://script.google.com/macros/s/AKfycbyDh_1VnFEwXFxyfL_L9aEX59FbJtx2EfSRNQFWi6tTThyIRb4x5M1911tbKf_1E1cg/exec', {
     method: 'POST',
+    mode: 'no-cors', // Use no-cors to bypass the CORS preflight
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ results: results, timestamp: Date.now() })
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log('Data saved successfully:', data);
+  .then(response => {
+    // With no-cors, the response is opaque and you cannot inspect its content
+    console.log("Data saved, opaque response:", response);
   })
   .catch(error => {
-    console.error('Error saving data:', error);
+    console.error("Error saving data:", error);
   });
 }
+
 
 // Start the experiment
 runExperiment();
