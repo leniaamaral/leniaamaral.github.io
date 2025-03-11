@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .jspsych-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          text-align: center;
+        }
+        video {
+          display: block;
+          margin: auto;
+        }
+      </style>      
+      
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Rating Experiment</title>
+
+    <!-- Load jsPsych and necessary plugins -->
+    <script src="https://unpkg.com/jspsych@7.3.3"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-video-button-response"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-likert"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-fullscreen"></script>
+
+</head>
+<body>
+    <script src="experiment.js"></script> <!-- Load your experiment script -->
+</body>
+</html>
