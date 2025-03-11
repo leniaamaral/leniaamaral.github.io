@@ -210,10 +210,10 @@ async function runExperiment() {
   jsPsych.run(timeline);
 }
 
-// Save results function: sends data to your PHP endpoint
+// Save results function: sends data to the Google Apps Script web app
 function saveResults(results) {
   console.log("Saving results:", results);
-  fetch('save_data.php', {
+  fetch('https://script.google.com/macros/s/AKfycbzmN2OHWvd9djCpATSrtDKaFl-Wd3zzTofdQZnq9MSryyCZU0UV3mhmV3yMY_qMdIiR/exec', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
