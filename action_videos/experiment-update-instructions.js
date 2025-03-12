@@ -2,7 +2,7 @@
 
 // Inject CSS for centering and stacking elements
 const style = document.createElement('style');
-style.innerHTML = 
+style.innerHTML = `
   .jspsych-content {
     display: flex;
     flex-direction: column;  /* stack elements vertically */
@@ -15,7 +15,7 @@ style.innerHTML =
     display: block;
     margin: auto;
   }
-;
+`;
 document.head.appendChild(style);
 
 // Initialize jsPsych
@@ -66,7 +66,7 @@ async function loadCSV(filename) {
 function createVideoTrial(videoFile) {
   let cleanFilename = videoFile;
   if (!cleanFilename.startsWith("videos/")) {
-    cleanFilename = videos/${cleanFilename};
+    cleanFilename = `videos/${cleanFilename}`;
   }
   return {
     type: jsPsychVideoButtonResponse,
@@ -104,8 +104,8 @@ function createLikertTrial(action) {
       jsPsych.getDisplayElement().innerHTML = "";
     },
     questions: [{
-      prompt: <div style='font-size:24px;'>How natural is this action of ${action}?</div>,
-      labels: ["1", "2", "3", "4", "5", "6", "7"]
+      prompt: `<div style='font-size:24px;'>How natural is this action of ${action}? (0-unnatural, 6-totally natural)</div>`,
+      labels: ["0", "1", "2", "3", "4", "5", "6"]
     }],
     button_label: "Submit"
   };
@@ -114,7 +114,7 @@ function createLikertTrial(action) {
 // Instructions trial
 const instructions = {
   type: jsPsychHtmlKeyboardResponse,
-  stimulus: "<div style='font-size:28px;'>Welcome to the experiment.<br>Press SPACE to start.</div>",
+  stimulus: "<div style='font-size:28px;'>Welcome to the experiment. In this experiment, you will watch short videos of a person using gestures to mimic the use of different objects. However, the objects themselves will not be visible.<br> Your task is simple: after watching each video, type the action you believe is being performed.<br>We will only collect your responses to the videos; no personal data will be recorded. Please respond as naturally and intuitively as possible.<br>Press SPACE to start.</div>",
   choices: [' ']
 };
 
@@ -131,7 +131,7 @@ const practiceTrial = [
   blankTrial,
   {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "<div style='font-size:24px;'>The correct answer is: Drinking.<br>Press SPACE to continue.</div>",
+    stimulus: "<div style='font-size:24px;'>The correct answer was: brushing teeth.<br>Press SPACE to continue.</div>",
     choices: [' ']
   }
 ];
