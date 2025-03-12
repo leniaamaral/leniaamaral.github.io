@@ -29,15 +29,15 @@ const jsPsych = initJsPsych({
 const enterFullscreenTrial = {
   type: jsPsychFullscreen,
   fullscreen_mode: true,
-  message: '<p style="font-size:24px;">The experiment will switch to full screen mode. Press Continue.</p>',
+  message: '<p style="font-size:24px;">A experiência irá iniciar em modo ecrã completo. Clique em Continue.</p>',
   button_label: "Continue"
 };
 
 const exitFullscreenTrial = {
   type: jsPsychFullscreen,
   fullscreen_mode: false,
-  message: '<p style="font-size:24px;">Exiting full screen. Thank you for participating!</p>',
-  button_label: "Finish"
+  message: '<p style="font-size:24px;">Sair do modo ecrã completo. Obrigado pela sua participação!</p>',
+  button_label: "Fim"
 };
 
 // Blank trial to clear the screen between stimuli
@@ -88,12 +88,12 @@ const textResponseTrial = {
     jsPsych.getDisplayElement().innerHTML = "";
   },
   questions: [{
-    prompt: "<div style='font-size:24px;'>What action was shown?</div>",
-    placeholder: "Type your response here...",
+    prompt: "<div style='font-size:24px;'>Qual era a ação?</div>",
+    placeholder: "Escreva aqui a sua resposta...",
     rows: 2,
     columns: 40
   }],
-  button_label: "Submit"
+  button_label: "Submeter"
 };
 
 // Likert trial creation (for Part 2)
@@ -104,17 +104,17 @@ function createLikertTrial(action) {
       jsPsych.getDisplayElement().innerHTML = "";
     },
     questions: [{
-      prompt: `<div style='font-size:24px;'>How natural is this action of ${action}? (0-unnatural, 6-conpletely natural)</div>`,
+      prompt: `<div style='font-size:24px;'>Quão natural é esta ação para ${action}? (0-nada natural, 6-completamente natural)</div>`,
       labels: ["0", "1", "2", "3", "4", "5", "6"]
     }],
-    button_label: "Submit"
+    button_label: "Submeter"
   };
 }
 
 // Instructions trial
 const instructions = {
   type: jsPsychHtmlKeyboardResponse,
-  stimulus: "<div style='font-size:28px;'>Welcome to the experiment!<br>In this experiment, you will watch short videos of a person using gestures to mimic the use of different objects.<br>However, the objects themselves will not be visible.<br> Your task is simple: after watching each video, type the action you believe is being performed.<br>We will only collect your responses to the videos; no personal data will be recorded.<br>Please respond as naturally and intuitively as possible.<br>Press SPACE to start.</div>",
+  stimulus: "<div style='font-size:28px;'>Vamos iniciar a experiência!<br>Nesta experiência, irá visualizar vídeos curtos de uma pessoa a usar gestos para imitar a utilização de diferentes objetos.<br>No entanto, os objetos não serão visíveis.<br> A sua tarefa é simples: no final de cada vídeo, irá escrever qual a ação que lhe parece estar a ser executada.<br>Apenas iremos recolher as suas respostas aos vídeos; nenhuma informação pessoal será recolhida.<br>Por favor responda de forma natural e intuitiva.<br>Clique na BARRA DE ESPAÇOS para iniciar.</div>",
   choices: [' ']
 };
 
@@ -122,7 +122,7 @@ const instructions = {
 const practiceTrial = [
   {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "<div style='font-size:24px;'>Practice trial.<br>Watch the video and type what action is shown.<br>Press SPACE to continue.</div>",
+    stimulus: "<div style='font-size:24px;'>Ensaio de teste.<br>Veja o vídeo e, de seguida, escreve qual é ação.<br>Clique na BARRA DE ESPAÇOS para iniciar.</div>",
     choices: [' ']
   },
   createVideoTrial("practice.mp4"),
@@ -131,7 +131,7 @@ const practiceTrial = [
   blankTrial,
   {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "<div style='font-size:24px;'>The correct answer is: BRUSHING TEETH.<br>Press SPACE to continue.</div>",
+    stimulus: "<div style='font-size:24px;'>A resposta correta seria: ESCOVAR OS DENTES.<br>Clique na BARRA DE ESPAÇOS para iniciar.</div>",
     choices: [' ']
   }
 ];
@@ -171,7 +171,7 @@ async function runExperiment() {
   // Part 2 introduction
   const part2_intro = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "<div style='font-size:24px;'>In this part of the experiment, you will watch the same videos again.<br>This time, your task is to rate how natural the action looks on a scale from 0 to 6, where:<br>0 = Not natural at all; 6 = Completely natural<br>Read the names of the actions carefully.<br>There are no right or wrong answers—just rate based on your intuition.<br>Press SPACE to continue.</div>",
+    stimulus: "<div style='font-size:24px;'>Na segunda parte desta experiência, irá visualizar os mesmos vídeos.<br>Desta vez, a sua tarefa é classificar o quão natural a ação lhe parece numa escala de 0 a 6.<br>0 = Nada natural; 6 = Completamente natural<br>Leia atentamente os nomes das ações.<br>Não existem respostas corretas ou erradas—apenas use a sua intuição.<br>Clique na BARRA DE ESPAÇOS para iniciar.</div>",
     choices: [' ']
   };
 
@@ -195,7 +195,7 @@ async function runExperiment() {
   // End screen trial that saves the results
   const endScreen = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "<div style='font-size:28px;'>Thank you for your participation!<br>Press any key to exit.</div>",
+    stimulus: "<div style='font-size:28px;'>Obrigado!<br>Clique em qualquer tecla para sair.</div>",
     choices: "ALL_KEYS",
     on_finish: function() {
       console.log("Final results:", results);
