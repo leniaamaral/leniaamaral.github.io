@@ -2,7 +2,7 @@
 
 // Inject CSS for centering and stacking elements
 const style = document.createElement('style');
-style.innerHTML = 
+style.innerHTML = `
   .jspsych-content {
     display: flex;
     flex-direction: column;  /* stack elements vertically */
@@ -15,7 +15,7 @@ style.innerHTML =
     display: block;
     margin: auto;
   }
-;
+`;
 document.head.appendChild(style);
 
 // Initialize jsPsych
@@ -66,7 +66,7 @@ async function loadCSV(filename) {
 function createVideoTrial(videoFile) {
   let cleanFilename = videoFile;
   if (!cleanFilename.startsWith("videos/")) {
-    cleanFilename = videos/${cleanFilename};
+    cleanFilename = `videos/${cleanFilename}`;
   }
   return {
     type: jsPsychVideoButtonResponse,
@@ -104,7 +104,7 @@ function createLikertTrial(action) {
       jsPsych.getDisplayElement().innerHTML = "";
     },
     questions: [{
-      prompt: <div style='font-size:24px;'>How natural is this action of ${action}?</div>,
+      prompt: `<div style='font-size:24px;'>How natural is this action of ${action}?</div>`,
       labels: ["1", "2", "3", "4", "5", "6", "7"]
     }],
     button_label: "Submit"
