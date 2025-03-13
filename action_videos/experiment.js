@@ -104,7 +104,7 @@ function createLikertTrial(action) {
       jsPsych.getDisplayElement().innerHTML = "";
     },
     questions: [{
-      prompt: `<div style='font-size:24px;'>How natural is this action of ${action}? (0-unnatural, 6-conpletely natural)</div>`,
+      prompt: `<div style='font-size:24px;'>How natural is this action of ${action}? (0-unnatural, 6-completely natural)</div>`,
       labels: ["0", "1", "2", "3", "4", "5", "6"]
     }],
     button_label: "Submit"
